@@ -1,4 +1,7 @@
 package com.example.ms.cybernet.ingress.dao.repository;
 
-public class PaymentRepository {
+import com.example.ms.cybernet.ingress.dao.entity.PaymentEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository<PaymentEntity,Long> {
 }

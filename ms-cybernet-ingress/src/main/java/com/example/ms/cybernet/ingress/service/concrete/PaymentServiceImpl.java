@@ -1,12 +1,37 @@
 package com.example.ms.cybernet.ingress.service.concrete;
 
+import com.example.ms.cybernet.ingress.dao.entity.PaymentEntity;
+import com.example.ms.cybernet.ingress.dao.repository.PaymentRepository;
+import com.example.ms.cybernet.ingress.exception.NotFoundException;
+import com.example.ms.cybernet.ingress.mapper.PaymentMapper;
 import com.example.ms.cybernet.ingress.model.request.PaymentRequest;
 import com.example.ms.cybernet.ingress.model.response.PaymentResponse;
 import com.example.ms.cybernet.ingress.service.abstraction.PaymentService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
 
+
+import java.util.Optional;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
+
+    private final PaymentRepository repository;
+
+    private Optional generatePayment(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("MMm"));
+    }
+
     @Override
-    public void createPayment(PaymentRequest paymentRequest) {
+    public void createPayment(PaymentRequest request) {
+        log.info("ServiceLog.createPayment.start request:{}", request);
+        repository.save(PAYMENT_MAPPER.convertToPayment(request));
+        log.info("ServiceLog.createPayment.success request:{}", request);
 
     }
 
