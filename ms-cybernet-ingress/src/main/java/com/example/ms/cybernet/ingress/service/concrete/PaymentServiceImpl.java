@@ -25,11 +25,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     private PaymentResponse findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
-        PaymentResponse response = repository.findById(id)
+        return repository.findById(id)
                 .map(PAYMENT_MAPPER::generatePaymentResponse)
-                .orElseThrow(() -> new NotFoundException("MMm"));
-        log.info("ServiceLog.findPaymentById.success id:{}", id);
-        return response;
+                .orElseThrow(() -> {
+                    log.info("ServiceLog.findPaymentById.error id:{}", id);
+                    throw new NotFoundException("PAYMENT_NOT_FOUND");
+                });
     }
 
     @Override
