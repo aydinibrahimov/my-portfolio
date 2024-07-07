@@ -10,6 +10,7 @@ import com.example.ms.cybernet.ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
 
 
@@ -22,10 +23,13 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository repository;
 
-    private PaymentResponse generatePayment(Long id) {
-        return repository.findById(id)
+    private PaymentResponse findPaymentById(Long id) {
+        log.info("ServiceLog.findPaymentById.start id:{}", id);
+        PaymentResponse response = repository.findById(id)
                 .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .orElseThrow(() -> new NotFoundException("MMm"));
+        log.info("ServiceLog.findPaymentById.success id:{}", id);
+        return response;
     }
 
     @Override
