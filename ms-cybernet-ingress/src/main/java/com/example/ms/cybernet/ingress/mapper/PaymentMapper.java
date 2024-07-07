@@ -10,7 +10,7 @@ import static com.example.ms.cybernet.ingress.model.enums.PaymentStatus.DRAFT;
 public enum PaymentMapper {
     PAYMENT_MAPPER;
 
-    public PaymentEntity convertToPayment(PaymentRequest request) {
+    public PaymentEntity generatePayment(PaymentRequest request) {
         return PaymentEntity.builder()
                 .paymentAmount(request.getPaymentAmount())
                 .description(request.getDescription())
@@ -18,12 +18,12 @@ public enum PaymentMapper {
                 .build();
     }
 
-    public PaymentResponse convertToPayment(PaymentEntity payment) {
+    public PaymentResponse generatePaymentResponse(PaymentEntity payment) {
         return PaymentResponse.builder()
                 .id(payment.getId())
                 .paymentAmount(payment.getPaymentAmount())
                 .description(payment.getDescription())
-                .paymentStatus(DRAFT)
+                .paymentStatus(payment.getPaymentStatus())
                 .build();
     }
 

@@ -22,15 +22,16 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository repository;
 
-    private Optional generatePayment(Long id) {
+    private PaymentResponse generatePayment(Long id) {
         return repository.findById(id)
+                .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .orElseThrow(() -> new NotFoundException("MMm"));
     }
 
     @Override
     public void createPayment(PaymentRequest request) {
         log.info("ServiceLog.createPayment.start request:{}", request);
-        repository.save(PAYMENT_MAPPER.convertToPayment(request));
+        repository.save(PAYMENT_MAPPER.generatePayment(request));
         log.info("ServiceLog.createPayment.success request:{}", request);
 
     }
