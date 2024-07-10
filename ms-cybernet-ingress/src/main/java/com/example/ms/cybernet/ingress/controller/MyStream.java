@@ -12,15 +12,13 @@ public class MyStream {
 
     public static void main(String[] args) {
 
-        List<String> strList = Arrays.asList("abc", "", "bcd", "", "defg", "jk");
+        List<String> strList = Arrays.asList("azn", "", "eur", "", "tl", "lari");
 
-        long a = strList.stream().filter(x -> !x.isEmpty()).count();
+        int b = myFilter(strList, x -> !x.isEmpty()).size(); // 1
 
-        int b=myFilter(strList, x->!x.isEmpty()).size();
+        long a = strList.stream().filter(x -> !x.isEmpty()).count(); // 2
 
-        System.out.println("My outputs " + a + " " + b);
     }
-
 
 
     public static <T> List<T> myFilter(List<T> list, Predicate<T> predicate) {
@@ -32,4 +30,5 @@ public class MyStream {
         }
         return result;
     }
+
 }
