@@ -2,10 +2,7 @@ package com.example.ms.cybernet.ingress.controller;
 
 import org.apache.commons.lang3.stream.Streams;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -14,6 +11,15 @@ import java.util.stream.Stream;
 public class MyStream {
 
     public static void main(String[] args) {
+        Map<String,String> map=Map.of("5","qirmizi","3","Sari");
+        List<Map<String,String>> dual=List.of(map);
+        String value = dual.stream()
+                .flatMap(innerMap -> innerMap.entrySet().stream()) // Stream entries
+                .filter(entry -> entry.getValue().equals("Sari") && entry.getKey() > 5) // Filter by value and key
+                .map(Map.Entry::getValue) // Get the value ("Sari") if found
+                .findFirst() // Get the first matching element (or null if none found)
+                .orElse(null); // R
+
 
         List<Integer> primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29);
     IntSummaryStatistics primesStatistics=    primes.stream().mapToInt(x->x)
