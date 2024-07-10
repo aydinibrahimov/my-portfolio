@@ -13,6 +13,12 @@ import java.util.stream.Stream;
 public class MyStream {
 
     public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(9, 10, 3, 4, 7, 3, 4);
+        List<Integer> distinctNumbers=   numbers.stream()
+                .map(x->x*5)
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println(distinctNumbers);
 
 
         List<String> list = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.", "Canada");
