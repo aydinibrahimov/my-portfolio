@@ -15,15 +15,13 @@ public class MyStream {
     public static void main(String[] args) {
 
 
+        List<String> list = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.", "Canada");
 
+       String capitalCountryNames = list.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.joining(", "));
 
-        List<String> list = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.","Canada");
-
-        List<String> capitalCountryNames= list.stream().map(String::toUpperCase).collect(Collectors.toList());
-        System.out.println(list+"\n"+capitalCountryNames);
-
-
-
+        System.out.println(list + "\n" + capitalCountryNames);
 
 
         List<String> strList = Arrays.asList("azn", "", "eur", "", "tl", "lari");
@@ -31,7 +29,6 @@ public class MyStream {
         int b = myFilter(strList, x -> !x.isEmpty()).size(); // 1
 
         long a = strList.stream().filter(x -> !x.isEmpty()).count(); // 2
-
 
 
     }
@@ -47,5 +44,4 @@ public class MyStream {
         return result;
     }
 
-    int a= Function<String,int>->
 }
