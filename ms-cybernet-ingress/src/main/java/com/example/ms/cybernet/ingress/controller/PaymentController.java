@@ -1,6 +1,7 @@
 package com.example.ms.cybernet.ingress.controller;
 
 import com.example.ms.cybernet.ingress.model.request.PaymentRequest;
+import com.example.ms.cybernet.ingress.model.response.PaymentResponse;
 import com.example.ms.cybernet.ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,4 +21,8 @@ public class PaymentController {
 
     }
 
+    @GetMapping("/{id}")
+    public PaymentResponse fetchPaymentById(@PathVariable Long id){
+        return paymentService.getPaymentById(id);
+    }
 }

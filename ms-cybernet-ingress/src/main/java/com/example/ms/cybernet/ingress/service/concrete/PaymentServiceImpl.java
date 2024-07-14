@@ -43,7 +43,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public PaymentResponse getPaymentById(Long id) {
-        return null;
+        log.info("ServiceLog.getPaymentById.start id:{}", id);
+        return findPaymentById(id);
     }
 
     @Override
