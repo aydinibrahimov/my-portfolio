@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("v1/payments")
@@ -27,11 +29,17 @@ public class PaymentController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletePaymentById(@PathVariable Long id) {
+    public void deletePayment(@PathVariable Long id) {
          paymentService.deletePaymentById(id);
     }
     @PatchMapping("/{id}/description")
     public void updateDescription(@PathVariable Long id,@RequestParam String description){
 
     }
+
+    @GetMapping("/")
+    public List<PaymentResponse> fetchAllPayments(){
+        return paymentService.getAllPayments();
+    }
+
 }
