@@ -27,7 +27,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private PaymentEntity findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
-        return repository.findById(id)
+        return repository.findByIdAntStatusNot(id,DELETED)
                 .orElseThrow(() -> {
                     log.info("ServiceLog.findPaymentById.error id:{}", id);
                     throw new NotFoundException("PAYMENT_NOT_FOUND");
@@ -61,8 +61,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void deletePaymentById(Long id) {
-        log.info("ServiceLog.deletePayment.start id:{}", id);
-        getPaymentById(id).setPaymentStatus(DELETED);
-        log.info("ServiceLog.deletePayment.success id:{}", id);
+        log.info("ServiceLog.deletePaymentById.start id:{}", id);
+        PaymentEntity payment = findPaymentById(id);
+            repository.save(payment);
+        log.info("ServiceLog.deletePaymentById.success id:{}", id);
     }
 }
