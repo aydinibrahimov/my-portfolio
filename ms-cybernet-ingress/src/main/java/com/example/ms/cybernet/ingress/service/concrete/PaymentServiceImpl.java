@@ -23,10 +23,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository repository;
 
-    private PaymentResponse findPaymentById(Long id) {
+    private PaymentEntity findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
         return repository.findById(id)
-                .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .orElseThrow(() -> {
                     log.info("ServiceLog.findPaymentById.error id:{}", id);
                     throw new NotFoundException("PAYMENT_NOT_FOUND");
@@ -44,11 +43,15 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponse getPaymentById(Long id) {
         log.info("ServiceLog.getPaymentById.start id:{}", id);
-        return findPaymentById(id);
+        PaymentEntity payment = findPaymentById(id);
+        return PAYMENT_MAPPER.generatePaymentResponse(payment);
     }
 
     @Override
     public void updatePaymentDescription(Long id, String description) {
-
+        log.info("ServiceLog.updatePaymentDescription.start id:{}", id);
+        PaymentEntity payment = findPaymentById(id);
+        payment.setDescription(description);
+        repository.save(payment);
     }
 }
