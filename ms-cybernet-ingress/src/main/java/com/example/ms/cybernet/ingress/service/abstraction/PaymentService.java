@@ -9,4 +9,6 @@ public interface PaymentService {
     PaymentResponse getPaymentById(Long id);
 
     void updatePaymentDescription(Long id, String description);
+
+    void deletePayment(Long id);
 }

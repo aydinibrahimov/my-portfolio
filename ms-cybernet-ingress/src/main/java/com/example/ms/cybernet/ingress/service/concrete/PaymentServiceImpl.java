@@ -4,6 +4,7 @@ import com.example.ms.cybernet.ingress.dao.entity.PaymentEntity;
 import com.example.ms.cybernet.ingress.dao.repository.PaymentRepository;
 import com.example.ms.cybernet.ingress.exception.NotFoundException;
 import com.example.ms.cybernet.ingress.mapper.PaymentMapper;
+import com.example.ms.cybernet.ingress.model.enums.PaymentStatus;
 import com.example.ms.cybernet.ingress.model.request.PaymentRequest;
 import com.example.ms.cybernet.ingress.model.response.PaymentResponse;
 import com.example.ms.cybernet.ingress.service.abstraction.PaymentService;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
+import static com.example.ms.cybernet.ingress.model.enums.PaymentStatus.*;
 
 
 import java.util.Optional;
@@ -53,5 +55,14 @@ public class PaymentServiceImpl implements PaymentService {
         PaymentEntity payment = findPaymentById(id);
         payment.setDescription(description);
         repository.save(payment);
+        log.info("ServiceLog.updatePaymentDescription.success id:{}", id);
+
+    }
+
+    @Override
+    public void deletePayment(Long id) {
+        log.info("ServiceLog.deletePayment.start id:{}", id);
+        getPaymentById(id).setPaymentStatus(DELETED);
+        log.info("ServiceLog.deletePayment.success id:{}", id);
     }
 }
