@@ -25,6 +25,11 @@ public class PaymentController {
     public PaymentResponse fetchPaymentById(@PathVariable Long id){
         return paymentService.getPaymentById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletePaymentById(@PathVariable Long id) {
+         paymentService.deletePaymentById(id);
+    }
     @PatchMapping("/{id}/description")
     public void updateDescription(@PathVariable Long id,@RequestParam String description){
 

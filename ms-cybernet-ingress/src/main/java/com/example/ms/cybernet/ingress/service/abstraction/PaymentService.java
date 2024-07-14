@@ -10,5 +10,5 @@ public interface PaymentService {
 
     void updatePaymentDescription(Long id, String description);
 
-    void deletePayment(Long id);
+    void deletePaymentById(Long id);
 }

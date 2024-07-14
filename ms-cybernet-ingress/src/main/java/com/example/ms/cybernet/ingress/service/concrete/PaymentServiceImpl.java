@@ -60,7 +60,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public void deletePayment(Long id) {
+    public void deletePaymentById(Long id) {
         log.info("ServiceLog.deletePayment.start id:{}", id);
         getPaymentById(id).setPaymentStatus(DELETED);
         log.info("ServiceLog.deletePayment.success id:{}", id);
