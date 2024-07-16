@@ -16,16 +16,17 @@ import java.util.List;
 import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
 import static com.example.ms.cybernet.ingress.model.enums.PaymentStatus.DELETED;
 
-@Service
+
 @Slf4j
 @RequiredArgsConstructor
+@Service
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository repository;
 
     private PaymentEntity findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
-        return repository.findByIdAndStatusNot(id, DELETED)
+        return repository.findByIdAndPaymentStatusNot(id, DELETED)
                 .orElseThrow(() -> {
                     log.info("ServiceLog.findPaymentById.error id:{}", id);
                     throw new NotFoundException("PAYMENT_NOT_FOUND");
@@ -69,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentResponse> getAllPayments() {
         log.info("ServiceLog.getAllPayments.start ");
-        return repository.findAllAndStatusNot(DELETED)
+        return repository.findAllAndPaymentStatusNot(DELETED)
                 .stream()
                 .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .toList();
