@@ -15,4 +15,5 @@ public interface PaymentService {
 
     void deletePaymentById(Long id);
     List<PaymentResponse> getAllPayments();
+    void test() throws Exception;
 }

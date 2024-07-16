@@ -15,7 +15,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: payment_amount
-                  type: BIGINT
+                  type: DECIMAL
               - column:
                   name: status
                   type: VARCHAR(255)

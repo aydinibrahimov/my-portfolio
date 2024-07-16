@@ -7,10 +7,12 @@ import com.example.ms.cybernet.ingress.model.request.PaymentRequest;
 import com.example.ms.cybernet.ingress.model.response.PaymentResponse;
 import com.example.ms.cybernet.ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
@@ -76,5 +78,20 @@ public class PaymentServiceImpl implements PaymentService {
                 .toList();
     }
 
+    @Override
+    @Transactional()
+    @SneakyThrows
+    public void test(){
+        repository.save(
+                PAYMENT_MAPPER.generatePayment(
+                        new PaymentRequest(BigDecimal.TEN,"desc-222"
+        )));
+        error();
+
+    }
+
+    private void error() throws Exception {
+       throw new Exception();
+    }
 
 }
