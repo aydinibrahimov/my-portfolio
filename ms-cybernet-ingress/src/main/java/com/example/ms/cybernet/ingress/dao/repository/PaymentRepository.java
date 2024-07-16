@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface PaymentRepository extends JpaRepository<PaymentEntity,Long> {
-    Optional<PaymentEntity> findByIdAndPaymentStatusNot(Long id, PaymentStatus status);
-    List<PaymentEntity> findAllAndPaymentStatusNot(PaymentStatus status);
+    Optional<PaymentEntity> findByIdAndStatusNot(Long id, PaymentStatus status);
+    List<PaymentEntity> findByStatusNot(PaymentStatus status);
 }

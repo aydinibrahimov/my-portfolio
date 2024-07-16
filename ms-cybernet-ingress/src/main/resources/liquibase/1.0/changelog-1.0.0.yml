@@ -1,23 +1,44 @@
 databaseChangeLog:
   - changeSet:
-      id: ID
+      id: payment&card data
       author: Aydin Ibrahimov
       changes:
         - createTable:
-            tableName: student
+            tableName: payment
             columns:
               - column:
                   name: id
-                  type: bigint
+                  type: BIGINT
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: first_name
-                  type: varchar(70)
+                  name: payment_amount
+                  type: BIGINT
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+            remarks: Table to store information about payment
+        - createTable:
+            tableName: card
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
                   constraints:
+                    primaryKey: true
                     nullable: false
-
-            remarks: Table to store information about students
-
+              - column:
+                  name: pan
+                  type: VARCHAR(255)
+              - column:
+                  name: card_holder
+                  type: VARCHAR(255)
+              - column:
+                  name: card_status
+                  type: VARCHAR(255)

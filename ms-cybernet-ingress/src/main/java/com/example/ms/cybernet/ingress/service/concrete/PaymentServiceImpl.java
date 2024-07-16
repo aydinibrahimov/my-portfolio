@@ -26,7 +26,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private PaymentEntity findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
-        return repository.findByIdAndPaymentStatusNot(id, DELETED)
+        return repository.findByIdAndStatusNot(id, DELETED)
                 .orElseThrow(() -> {
                     log.info("ServiceLog.findPaymentById.error id:{}", id);
                     throw new NotFoundException("PAYMENT_NOT_FOUND");
@@ -70,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentResponse> getAllPayments() {
         log.info("ServiceLog.getAllPayments.start ");
-        return repository.findAllAndPaymentStatusNot(DELETED)
+        return repository.findByStatusNot(DELETED)
                 .stream()
                 .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .toList();

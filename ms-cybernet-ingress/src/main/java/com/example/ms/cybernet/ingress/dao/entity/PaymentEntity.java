@@ -22,6 +22,6 @@ public class PaymentEntity {
     private Long id;
     private BigDecimal paymentAmount;
     @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
+    private PaymentStatus status;
     private String description;
 }

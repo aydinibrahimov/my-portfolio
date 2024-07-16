@@ -14,7 +14,7 @@ public enum PaymentMapper {
         return PaymentEntity.builder()
                 .paymentAmount(request.getPaymentAmount())
                 .description(request.getDescription())
-                .paymentStatus(DRAFT)
+                .status(DRAFT)
                 .build();
     }
 
@@ -23,7 +23,7 @@ public enum PaymentMapper {
                 .id(payment.getId())
                 .paymentAmount(payment.getPaymentAmount())
                 .description(payment.getDescription())
-                .paymentStatus(payment.getPaymentStatus())
+                .paymentStatus(payment.getStatus())
                 .build();
     }
 
