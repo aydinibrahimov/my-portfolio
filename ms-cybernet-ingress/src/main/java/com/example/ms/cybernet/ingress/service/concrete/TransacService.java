@@ -22,7 +22,6 @@ public class TransacService {
                 PAYMENT_MAPPER.generatePayment(
                         new PaymentRequest(BigDecimal.TEN,"desc-222"
                         )));
-        throw new RuntimeException();
 
     }
 }
