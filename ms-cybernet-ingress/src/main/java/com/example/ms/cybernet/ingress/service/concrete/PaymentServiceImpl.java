@@ -78,20 +78,23 @@ public class PaymentServiceImpl implements PaymentService {
                 .toList();
     }
 
-    @Override
-    @Transactional()
-    @SneakyThrows
     public void test(){
+        save();
+
+    }
+
+    @Transactional()
+    public void save(){
         repository.save(
                 PAYMENT_MAPPER.generatePayment(
                         new PaymentRequest(BigDecimal.TEN,"desc-222"
         )));
-        error();
+        throw new RuntimeException();
 
     }
 
-    private void error() throws Exception {
-       throw new Exception();
+    private void error()  {
+       throw new RuntimeException();
     }
 
 }
