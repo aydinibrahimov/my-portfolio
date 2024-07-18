@@ -42,7 +42,7 @@ public class PaymentController {
         return paymentService.getAllPayments();
     }
 
-    @PostMapping("test")
+    @PostMapping("/test")
     public void test() throws Exception{
         paymentService.test();
     }

@@ -25,6 +25,7 @@ import static com.example.ms.cybernet.ingress.model.enums.PaymentStatus.DELETED;
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository repository;
+    private final TransacService service;
 
     private PaymentEntity findPaymentById(Long id) {
         log.info("ServiceLog.findPaymentById.start id:{}", id);
@@ -78,20 +79,13 @@ public class PaymentServiceImpl implements PaymentService {
                 .toList();
     }
 
+//    @Transactional
     public void test(){
-        save();
+        service.save();
 
     }
 
-    @Transactional()
-    public void save(){
-        repository.save(
-                PAYMENT_MAPPER.generatePayment(
-                        new PaymentRequest(BigDecimal.TEN,"desc-222"
-        )));
-        throw new RuntimeException();
-
-    }
+//
 
     private void error()  {
        throw new RuntimeException();
