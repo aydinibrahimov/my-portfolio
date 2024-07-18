@@ -15,7 +15,7 @@ import static com.example.ms.cybernet.ingress.mapper.PaymentMapper.PAYMENT_MAPPE
 public class TransacService {
     private  final PaymentRepository repository;
 
-    @Transactional
+    @Transactional(propagation = )
     public void save(){
         repository.save(
                 PAYMENT_MAPPER.generatePayment(

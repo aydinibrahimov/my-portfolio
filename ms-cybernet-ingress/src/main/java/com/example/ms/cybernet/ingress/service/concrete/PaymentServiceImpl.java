@@ -78,17 +78,11 @@ public class PaymentServiceImpl implements PaymentService {
                 .map(PAYMENT_MAPPER::generatePaymentResponse)
                 .toList();
     }
-
-//    @Transactional
     public void test(){
         service.save();
 
     }
 
-//
 
-    private void error()  {
-       throw new RuntimeException();
-    }
 
 }
