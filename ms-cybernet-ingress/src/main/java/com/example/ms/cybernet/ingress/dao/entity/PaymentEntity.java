@@ -20,6 +20,8 @@ public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
+
     private BigDecimal paymentAmount;
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
