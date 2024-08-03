@@ -1,21 +1,33 @@
 package com.example.ms.cybernet.ingress.lesson_15.entity;
 
+import java.util.Objects;
+
 public class Main {
 
+    Long q=5L;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Main main = (Main) o;
+        return Objects.equals(q, main.q);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(q);
+    }
+
     public static void main(String[] args) {
-
-        Post p = new Post();
-        Post q = new Post();
-        p.setId(1L);
-        q.setId(1L);
+//        Object o1=new Object();
+//        Object o2=new Object();
+//        System.out.println(o2.equals(o1));
 
 
-        System.out.println(p.getId() == q.getId());
-        System.out.println(p.getId().equals(q.getId()));
-        String a0 = "1st value";
-        String a1 = "1st  value";
-        System.out.println(a1.equals(a0));
-        int a = 5, b = 5;
-        System.out.println(a == b);
+        String str1 ="Hello";
+        String str2 = "Hello";
+        System.out.println(str1==str2);
+
     }
 }
