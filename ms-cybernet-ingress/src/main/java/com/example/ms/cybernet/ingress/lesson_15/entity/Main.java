@@ -6,6 +6,7 @@ public class Main {
    static char cr;
 
     Long q=5L;
+    Long p=5L;
 
 
 
