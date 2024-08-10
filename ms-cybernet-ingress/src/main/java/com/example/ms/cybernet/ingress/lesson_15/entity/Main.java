@@ -1,41 +1,28 @@
 package com.example.ms.cybernet.ingress.lesson_15.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Main {
 
 
     public static void main(String[] args) {
-        char[] cr = {'k', 'e', 'l', 'e', 'm'};
-        System.out.println(reverseString(cr));
+       int[] seats = {4,1,5,9}, students = {1,3,2,6};
+        System.out.println(minMovesToSeat(seats, students));
 
     }
 
-    public static ListNode middleNode(ListNode head) {
+    public static int minMovesToSeat(int[] seats, int[] students) {
+        int count=0;
 
-        var slow=head;
-        var fast=head;
+        Arrays.sort(seats);
+        Arrays.sort(students);
 
-        while(fast!=null&&fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+        for(int i=0;i<seats.length;i++){
+            count+=Math.abs(students[i]-seats[i]);
         }
-        return slow;
+        return count;
     }
 
-    //    reversing char array using two pointer technique
-    public static String reverseString(char[] value) {
-        int start = 0;
-        int end = value.length - 1;
-
-        while (start < end) {
-            char temp = value[start];
-            value[start] = value[end];
-            value[end] = temp;
-            start++;
-            end--;
-        }
-        return String.valueOf(value);
-    }
 
 }
