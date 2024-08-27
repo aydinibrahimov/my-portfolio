@@ -11,30 +11,30 @@ public class Main {
 
     public static void main(String[] args) {
 //        fib(3);
-    //    System.out.println(tribonacci(4));
-List<Integer> nums=List.of(4,6,10);
+        //    System.out.println(tribonacci(4));
+        List<Integer> nums = List.of(4, 6, 10);
 
-        System.out.println(sumPossible(15,nums));
+        System.out.println(sumPossible(15, nums));
     }
 
 
     //Sum Possible
-    public static boolean sumPossible(int amount , List<Integer> numbers){
-        return sumPossible(amount,numbers, new HashMap<>());
+    public static boolean sumPossible(int amount, List<Integer> numbers) {
+        return sumPossible(amount, numbers, new HashMap<>());
     }
 
-    public static boolean sumPossible(int amount , List<Integer> numbers, HashMap<Integer,Boolean> memo){
-        if (amount==0) return true;
-        if(amount<0) return false;
+    public static boolean sumPossible(int amount, List<Integer> numbers, HashMap<Integer, Boolean> memo) {
+        if (amount == 0) return true;
+        if (amount < 0) return false;
 
-        if(memo.containsKey(amount)){
+        if (memo.containsKey(amount)) {
             return memo.get(amount);
         }
 
-        for(int num:numbers){
-            int sumAmount=amount-num;
-            if(sumPossible(sumAmount,numbers,memo)){
-                memo.put(amount,true);
+        for (int num : numbers) {
+            int sumAmount = amount - num;
+            if (sumPossible(sumAmount, numbers, memo)) {
+                memo.put(amount, true);
                 return true;
             }
         }
@@ -48,10 +48,11 @@ List<Integer> nums=List.of(4,6,10);
     }
 
     public static int tribonacci(int n, HashMap<Integer, Integer> memo) {
-        if (n == 0 ) {
+        if (n == 0) {
             return 0;
         }
         if (n == 1 || n == 2) {
+
             return 1;
         }
 
