@@ -14,10 +14,11 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Setter
 @Getter
-@EqualsAndHashCode(of ="id" )
+@EqualsAndHashCode(of = "id")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    private String name;
 }
