@@ -45,7 +45,6 @@ public class PashaCup6 {
                 return false;
             }
         }
-
         return true;
     }
 
