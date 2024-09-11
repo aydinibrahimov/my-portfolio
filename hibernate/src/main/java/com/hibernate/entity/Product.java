@@ -16,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String product;
+    private String title;
     @Embedded
     Metadata metadata;
 
