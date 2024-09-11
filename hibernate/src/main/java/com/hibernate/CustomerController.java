@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/hibernate/")
 @RequiredArgsConstructor
@@ -25,4 +27,11 @@ public class CustomerController {
           System.err.println("MY Messagesss"+e.getMessage());
       }
     }
+
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Customer> getAll(@RequestBody CustomerRequest customer) {
+        return customerService.getAllCustomers();
+}
 }

@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -29,4 +30,9 @@ public class CustomerService {
 
         customerRepository.save(customer);
     }
+    
+    public List<Customer>  getAllCustomers(){
+        return customerRepository.findAll();
+    }
+
 }
