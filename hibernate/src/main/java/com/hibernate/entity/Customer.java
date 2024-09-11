@@ -1,16 +1,13 @@
 package com.hibernate.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Table
 @Entity
 @Setter
 @Getter
@@ -21,4 +18,8 @@ public class Customer {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
+
+    @Embedded
+    @JsonProperty("metadata")
+    Metadata metadata;
 }

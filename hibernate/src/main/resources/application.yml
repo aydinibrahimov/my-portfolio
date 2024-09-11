@@ -3,11 +3,11 @@ spring:
     name: hibernate
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/hibernate?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost/hibernate-db?createDatabaseIfNotExist=true
     username: root
     password: root
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
 server:
-  port: 10998
+  port: 1097
