@@ -18,7 +18,8 @@ public class Customer {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
-
+    @Enumerated(value =EnumType.STRING)
+    CustomerType customerType;
     @Embedded
     @JsonProperty("metadata")
     Metadata metadata;

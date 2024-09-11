@@ -1,8 +1,14 @@
 package com.hibernate.requests;
 
+import lombok.Builder;
+
+import java.sql.Timestamp;
+
+
+@Builder
 public class CustomerRequest {
 
     public String name;
-    public String createDate;
-    public String updateDate;
+    public Timestamp createDate;
+    public Timestamp updateDate;
 }
