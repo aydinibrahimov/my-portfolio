@@ -1,4 +1,4 @@
-package com.hibernate;
+package com.hibernate.controller;
 
 
 import com.hibernate.entity.Customer;

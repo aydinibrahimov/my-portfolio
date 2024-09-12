@@ -5,6 +5,7 @@ import com.hibernate.entity.CustomerType;
 import com.hibernate.entity.Metadata;
 import com.hibernate.repository.CustomerRepository;
 import com.hibernate.requests.CustomerRequest;
+import com.hibernate.utils.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,12 @@ import java.util.List;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final Util util;
 
     public void save(CustomerRequest customerRequest) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
-        LocalDateTime ldt = LocalDateTime.now();
+
         Metadata metadata = new Metadata();
-        metadata.setCreateDate(ldt.format(formatter));
+        metadata.setCreateDate(util.currentDateTime());
         Customer customer = new Customer();
         customer.setMetadata(metadata);
         customer.setCustomerType(CustomerType.REGULAR);
