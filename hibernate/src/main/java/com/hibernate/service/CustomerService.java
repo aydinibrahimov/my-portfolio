@@ -1,6 +1,7 @@
 package com.hibernate.service;
 
 import com.hibernate.entity.Customer;
+import com.hibernate.entity.CustomerType;
 import com.hibernate.entity.Metadata;
 import com.hibernate.repository.CustomerRepository;
 import com.hibernate.requests.CustomerRequest;
@@ -24,6 +25,7 @@ public class CustomerService {
         metadata.setCreateDate(ldt.format(formatter));
         Customer customer = new Customer();
         customer.setMetadata(metadata);
+        customer.setCustomerType(CustomerType.REGULAR);
         customer.setName(customerRequest.name);
 
         customerRepository.save(customer);

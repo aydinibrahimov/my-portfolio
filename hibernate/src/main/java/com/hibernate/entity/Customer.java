@@ -21,6 +21,5 @@ public class Customer {
     @Enumerated(value =EnumType.STRING)
     CustomerType customerType;
     @Embedded
-    @JsonProperty("metadata")
     Metadata metadata;
 }

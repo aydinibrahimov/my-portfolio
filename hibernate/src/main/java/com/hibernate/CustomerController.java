@@ -20,12 +20,7 @@ public class CustomerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void save( @RequestBody CustomerRequest customer) {
-      try {
           customerService.save(customer);
-      }catch (Exception e){
-          e.printStackTrace();
-          System.err.println("MY Messagesss"+e.getMessage());
-      }
     }
 
 
