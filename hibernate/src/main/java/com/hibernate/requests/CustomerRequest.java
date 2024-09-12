@@ -9,6 +9,5 @@ import java.sql.Timestamp;
 public class CustomerRequest {
 
     public String name;
-    public Timestamp createDate;
-    public Timestamp updateDate;
+
 }

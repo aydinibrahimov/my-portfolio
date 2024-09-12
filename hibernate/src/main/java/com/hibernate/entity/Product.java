@@ -20,4 +20,6 @@ public class Product {
     @Embedded
     Metadata metadata;
 
+
+
 }

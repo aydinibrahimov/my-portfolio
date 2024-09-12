@@ -11,6 +11,6 @@ import java.sql.Timestamp;
 @Getter
 public class Metadata {
 
-    private Timestamp createDate;
-    private Timestamp updateDate;
+    private String createDate;
+    private String updateDate;
 }
