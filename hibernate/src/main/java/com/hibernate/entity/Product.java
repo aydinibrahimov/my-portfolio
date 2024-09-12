@@ -20,6 +20,7 @@ public class Product {
     @Embedded
     Metadata metadata;
 
-
+    @ManyToOne
+    Customer customer;
 
 }

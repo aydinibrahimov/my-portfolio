@@ -1,11 +1,14 @@
 package com.hibernate.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import static cascade
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -22,4 +25,7 @@ public class Customer {
     CustomerType customerType;
     @Embedded
     Metadata metadata;
+
+    @OneToMany(mappedBy = "customer", cascade = ALL)
+    List<Product> products;
 }
