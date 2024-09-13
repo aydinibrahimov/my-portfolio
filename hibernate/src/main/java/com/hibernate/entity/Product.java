@@ -10,7 +10,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Setter
 @Getter
-@EqualsAndHashCode(of ="id" )
+@EqualsAndHashCode(of = "id")
 public class Product {
 
     @Id
@@ -21,6 +21,7 @@ public class Product {
     Metadata metadata;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     Customer customer;
 
 }

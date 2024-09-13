@@ -9,8 +9,6 @@ import com.hibernate.utils.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -28,6 +26,7 @@ public class CustomerService {
         customer.setMetadata(metadata);
         customer.setCustomerType(CustomerType.REGULAR);
         customer.setName(customerRequest.name);
+        customer.setProducts(customerRequest.);
 
         customerRepository.save(customer);
     }

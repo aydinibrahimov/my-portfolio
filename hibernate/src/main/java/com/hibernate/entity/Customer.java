@@ -1,6 +1,5 @@
 package com.hibernate.entity;
 
-import static cascade
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
