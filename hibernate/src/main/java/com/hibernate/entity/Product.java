@@ -1,6 +1,7 @@
 package com.hibernate.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +9,11 @@ import lombok.Setter;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Setter
+@Builder
 @Getter
+@Setter
 @EqualsAndHashCode(of = "id")
+
 public class Product {
 
     @Id
