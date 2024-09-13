@@ -6,6 +6,7 @@ import com.hibernate.entity.Metadata;
 import com.hibernate.entity.Product;
 import com.hibernate.repository.CustomerRepository;
 import com.hibernate.requests.CustomerRequest;
+import com.hibernate.requests.ProductRequest;
 import com.hibernate.utils.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -9,7 +9,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    open-in-view: false
+#    open-in-view: false
 
 server:
   port: 1097
