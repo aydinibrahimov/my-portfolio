@@ -1,0 +1,16 @@
+spring:
+  name: shop
+  application:
+    name: hibernate
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/hibernate-db?createDatabaseIfNotExist=true
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    open-in-view: false
+
+server:
+  port: 1097
