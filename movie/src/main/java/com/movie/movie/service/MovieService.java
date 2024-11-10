@@ -17,11 +17,11 @@ public class MovieService {
     public MovieDto getMovie(Integer id) {
         var movie = movieRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Movie not found"));
-        return mapMovieToMovieDto(movie);
+        return buildMovieDto(movie);
     }
 
 
-    private MovieDto mapMovieToMovieDto(Movie movie) {
+    private MovieDto buildMovieDto(Movie movie) {
         var movieDto = MovieDto.builder()
                 .movieCast(movie.getMovieCast())
                 .poster(movie.getPoster())
@@ -29,5 +29,15 @@ public class MovieService {
                 .director(movie.getDirector())
                 .build();
         return movieDto;
+    }
+
+    private Movie buildMovie(MovieDto movieDto) {
+        var movie = Movie.builder()
+                .movieCast(movieDto.getMovieCast())
+                .poster(movieDto.getPoster())
+                .title(movieDto.getTitle())
+                .director(movieDto.getDirector())
+                .build();
+        return movie;
     }
 }
