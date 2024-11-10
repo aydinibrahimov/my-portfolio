@@ -11,16 +11,12 @@ import java.nio.file.Paths;
 public class FileService {
     public String uploadFile(String path, MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-
         String filePath = path + File.separator + fileName;
-
         File f = new File(path);
-        if(!f.exists()) {
+        if (!f.exists()) {
             f.mkdir();
         }
-
-        Files.copy(file.getInputStream(), Paths.get(filePath));
-
+        Files.copy(file.getInputStream(), Paths.get(path));
         return fileName;
     }
 

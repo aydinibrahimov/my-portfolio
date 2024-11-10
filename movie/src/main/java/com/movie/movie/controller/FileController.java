@@ -13,8 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 
+
 @RestController
 @RequestMapping("/file/")
+
 public class FileController {
 
     private final FileService fileService;
@@ -22,6 +24,7 @@ public class FileController {
     public FileController(FileService fileService) {
         this.fileService = fileService;
     }
+
 
     @Value("${project.poster}")
     private String path;

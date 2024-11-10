@@ -31,10 +31,10 @@ spring:
           starttls:
             enable: true
 
-  project:
-    poster: posters/
+project:
+  poster: posters/
 
-  base:
+base:
     url: "http://localhost:8080"
 
 server:
