@@ -3,7 +3,7 @@ spring:
     name: hibernate
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/movie-db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost/movie_db_v1?createDatabaseIfNotExist=true
     username: root
     password: root
   jpa:
@@ -35,7 +35,7 @@ project:
   poster: posters/
 
 base:
-    url: "http://localhost:1095"
+    url: "http://localhost:1095/file/"
 
 server:
   port: 1095

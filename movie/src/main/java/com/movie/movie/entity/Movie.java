@@ -2,10 +2,7 @@ package com.movie.movie.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
@@ -13,6 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Builder
 public class Movie {
 
@@ -20,10 +18,14 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
 
+
+
     @Column(nullable = false, length = 200)
     @NotBlank(message = "Please provide movie's title!")
     private String title;
-
+    @Column(nullable = false, length = 20)
+    @NotBlank(message = "I-imported | U-updated | R-removed")
+    private String status;
     @Column(nullable = false)
     @NotBlank(message = "Please provide movie's director!")
     private String director;
