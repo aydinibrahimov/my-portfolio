@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,14 +40,32 @@ public class MovieService {
         return buildMovieDto(movie);
     }
 
-    public MovieDto getMovie(Integer id) {
+    public MovieDto updateMovie(Integer movieId, MovieDto movieDto, MultipartFile file) throws IOException {
+        var movie = getMovieById(movieId);
+        var fileName = movie.getPoster();
+        if (fileName != null || !fileName.isEmpty()) {
+            Files.deleteIfExists(Paths.get(path + File.separator + fileName));
+            fileName = fileService.uploadFile(path, file);
+        }
+        movieDto.setPoster(fileName);
+
+        var newMovie = buildMovie(movieDto);
+        newMovie = movieRepository.save(newMovie);
+        var response = buildMovieDto(newMovie);
+        response.setPosterUrl(baseUrl + fileName);
+        return response;
+
+
+    }
+
+    public MovieDto getMovieById(Integer id) {
         var movie = movieRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Movie not found with id=" + id));
         return buildMovieDto(movie);
     }
 
     public String deleteMovie(Integer movieId) throws IOException {
-        var movieDto = getMovie(movieId);
+        var movieDto = getMovieById(movieId);
         buildMovie(movieDto).setStatus("R");
         return "Movie deleted with id = " + movieId;
     }
