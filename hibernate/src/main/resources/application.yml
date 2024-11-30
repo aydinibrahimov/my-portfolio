@@ -9,7 +9,24 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-attempts: 5
+          max-interval: 5s
+          multiplier: 1
+        missing-queues-fatal: false
 #    open-in-view: false
 
 server:
-  port: 1097
+  port: 8080
+rabbitmq:
+  queue:
+    payment: PAYMENT_Q
+    payment-dlq: PAYMENT_DLQ
