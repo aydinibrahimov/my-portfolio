@@ -1,5 +1,6 @@
 package az.aydinibrahimov.rabbitmq;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,5 +10,8 @@ public class RabbitmqApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RabbitmqApplication.class, args);
 	}
+
+
+
 
 }
