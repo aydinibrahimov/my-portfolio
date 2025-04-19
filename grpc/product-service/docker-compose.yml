@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  product-postgres:
+    image: postgres
+    container_name: product-postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=productDB
+    ports:
+      - "54322:5432"
+    volumes:
+      - product-volume:/var/lib/postgresql/data
+
+volumes:
+  product-volume:
+
+
+#
+#services:
+#  product-postgres:
+#    image: postgres
+#    container_name: product-postgres
+#    read_only: true
+#    environment:
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin123
+#      - POSTGRES_DB=productDB
+#    ports:
+#      - "54322:5322"
+#    volumes:
+#      - product-volume:/var/lib/postgresql/data
+#    command:
+#      - p 54322
+#
+#volumes:
+#  product-volume:
