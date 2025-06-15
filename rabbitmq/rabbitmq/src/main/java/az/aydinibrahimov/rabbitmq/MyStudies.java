@@ -21,8 +21,10 @@ public class MyStudies {
                 .forEach(System.out::println);
     }
 
-    static Stream<BigInteger> primes() {
-        return Stream.iterate(TWO, BigInteger::nextProbablePrime);
+   static Stream<BigInteger> primes() {
+
+        Stream<BigInteger> c=Stream.iterate(TWO, BigInteger::nextProbablePrime);
+        return c;
     }
 
 
